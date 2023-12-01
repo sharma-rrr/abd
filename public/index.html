@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Chat</title>
+  <!-- Add any necessary stylesheets or meta tags -->
+</head>
+<body>
+  <div id="chat">
+    <div id="chatMessages">
+      <!-- Chat messages will appear here -->
+    </div>
+    <input type="text" id="messageInput" placeholder="Type your message here" />
+    <button id="sendBtn">Send</button>`
+  </div>
+
+  <!-- Import Socket.IO from CDN -->
+  <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+  <script>
+    // Connect to Socket.IO server
+    const socket = io();
+
+    // Send message when the 'Send' button is clicked
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const message = document.getElementById('messageInput').value.trim();
+      if (message !== '') {
+        socket.emit('chat message', message);
+        document.getElementById('messageInput').value = '';
+      }
+    });
+    
+    // Receive chat messages from the server and display them
+    socket.on('chat message', (msg) => {
+      const chatMessages = document.getElementById('chatMessages');
+      const newMessage = document.createElement('div');
+      newMessage.textContent = msg;
+      chatMessages.appendChild(newMessage);
+    });
+    // Receive custom event 'hhjhj' from the server and handle the data
+    socket.on('hhjhj', (data) => {
+      // Handle the received data here
+      console.log('Received data:', data);
+      // You can update your UI or perform any actions with the received data
+    });''
+    socket.on('realtimeData', (data) => {
+    console.log('Received real-time data:', data);
+    // Handle the received data here - update UI, perform actions, etc.
+  });
+  </script>
+</body>
+</html>
+
