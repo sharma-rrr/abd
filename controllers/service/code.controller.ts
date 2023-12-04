@@ -721,7 +721,7 @@ commonController.errorMessage("user otp not create ",res)
             
  
 
-            
+
             // update phoneNumber
             async updatephone(payload:any,res:Response){
               const{newphonenumber,phonenumber}=payload 

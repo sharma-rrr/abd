@@ -16,7 +16,6 @@ import { UserInstance } from 'twilio/lib/rest/conversations/v1/user';
  var upload = multer({
   storage:storage
  })
-
 const router=express.Router();
 //add bank detail
 router.post("/bank",userController.addbank)
